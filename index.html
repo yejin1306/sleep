@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>good night</title>
+
+    <style type="text/css">
+        @font-face{
+        font-family: 'DX경필명조B'
+        src:url(DXKPMB-KSCpc-EUC-H.ttf) format('truetype');
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+        #container {
+            font-family: DX경필명조B;
+            position: relative;
+            margin: 0px;
+            background-image: url('sky2.jpg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            /* background-image: linear-gradient(to bottom, #1E0D3F , pink);*/
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+        }
+        #header{
+            color: white;
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+
+        }
+        #header2{
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            position: absolute;
+            top: 70px;
+            transform: translateX(50%);
+            right: 50%;
+
+        }
+
+        #circle {
+
+            width: 3px;
+            height: 5px;
+            background: linear-gradient(to bottom, white, yellow);
+            ;
+            /*border-radius: 50%;*/
+
+            position: absolute;
+            animation: drop 2s infinite
+                /*alternate*/
+            ;
+
+        }
+
+        @keyframes drop {
+
+            from {
+                padding-top: 0;
+                margin-left: 30%;
+            }
+
+            to {
+                margin-top: 300px;
+                margin-left: 0;
+            }
+
+        }
+
+        /*#box{
+            width: 100%;
+            height: 100%;
+            overflow:hidden;
+        }*/
+        #moon {
+            position: absolute;
+            width: 170px;
+            left: 40px;
+            padding: 30px;
+            top: 30px;
+
+        }
+
+        #cat {
+            z-index: 1;
+            position: absolute;
+            width: 270px;
+            top: 370px;
+            right: 50px;
+        }
+        
+        .star{
+            cursor: pointer;
+        }
+        #star1 {
+            position: absolute;
+            margin-top: 130px;
+            width: 90px;
+            right: 370px;
+        }
+
+        #star2 {
+            position: absolute;
+            margin-top: 250px;
+            width: 120px;
+            right: 650px;
+        }
+
+        #star3 {
+            position: absolute;
+            margin-top: 75px;
+            width: 80px;
+            right: 900px;
+        }
+
+        #star4 {
+            position: absolute;
+            margin-top: 160px;
+            width: 80px;
+            right: 1150px;
+        }
+
+        #star5 {
+            position: absolute;
+            margin-top: 35px;
+            width: 95px;
+            right: 150px;
+        }
+
+        .change {
+            -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+            /* Safari */
+            transition: width 2s, height 2s, transform 2s infinite alternate;
+        }
+
+        .change:hover {
+            -webkit-transform: rotate(-40deg);
+            /* Safari */
+            transform: rotate(-40deg);
+        }
+        #modal{
+            font-family: DX경필명조B;
+            display: none;
+            right: 50%;
+            transform: translateX(50%);
+            margin-top: 100px;
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background: lightblue;
+            border-radius: 5%;
+        }
+        #modal #picture{
+            position: absolute;
+            right: 50%;
+            top: 40px;
+            transform: translateX(50%);
+            width: 170px;
+            height: 170px;
+            background: white;
+        }
+        #modal #title{
+            position: absolute;
+            transform: translateX(50%);
+            right: 47%;
+            top: 10px;
+            width: 160px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #modal #close_btn{
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        #modal #close_btn img{
+            width: 100%;
+            height: 100%;
+        }
+        #modal #info{
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            top: 220px;
+            width: 170px;
+            height: 65px;
+        }
+        #modal #info #heart{
+            position: absolute;
+            /*top: 1px;
+            left: 5px;*/
+            width: 20px;
+            cursor: pointer;
+        }
+        #modal #info #heart img{
+            width: 100%;
+            height: 100%;
+        }
+        #modal #info #heart img#red_heart{
+            display: none;
+        }
+        #modal #info #song_name{
+            text-align: center;
+            /*height: 20px;*/
+            margin-bottom: 4px;
+            font-size: 11px;
+
+        }  
+        #modal #info #play_btn{
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 5px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+        #modal #info #play_btn img{
+            width: 100%;
+            height: 100%;
+        }
+        #modal #info #play_btn #pause{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="header">Do you want to sleep?</h1>
+        <h2 id="header2">click the stars</h2>
+        <div id="circle"></div>
+        <img class="change" id="moon" src="moon.png">
+        <img id="cat" src="cat1.png">
+        <img class="change star" id="star1" src="gemini.png">
+        <img class="change star" id="star2" src="cencer.png">
+        <img class="change star" id="star3" src="capricorn.png">
+        <img class="change star" id="star4" src="libra.png">
+        <img class="change star" id="star5" src="taurus.png">
+        <div id="modal">
+            <div id="title">have a good night</div>
+            <div id="close_btn">
+                <img src="close_btn.png" alt="X">
+            </div>
+            <div id="picture"></div>
+            <div id="info">
+                <div id="heart">
+                    <img src="none_heart.png" id="none_heart">
+                    <img src="heart.png" id="red_heart">
+                </div>
+                <div id="song_name"></div>
+                <hr>
+                <div id="play_btn">
+                    <img src="play_btn.png" id="play">
+                    <img src="pause_btn.png" id="pause">
+                </div>
+            </div>
+        </div>
+        <audio id="maybe">
+            <source src="Maybe.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="kisstherain">
+            <source src="Kiss The Rain.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="greensleeves">
+            <source src="Greensleeves.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="howls">
+            <source src="Howls Moving Castle OST.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="jocelyn">
+            <source src="Jocelyn-Benceuse.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+
+    <script type="text/javascript">
+        // var t= circle.cloneNode(true);
+
+        // t.style.background="red";
+
+        // document.body.appendChild(t);
+
+        var total = 0;
+
+        for (var i = 0; i < 10; i++) {
+
+            // console.log(i)
+
+            // total=total+(i+1);
+
+            var t = document.getElementById("circle");
+
+            var k = t.cloneNode(true);
+
+            k.style.left = Math.random() * window.innerWidth + "px";
+
+            k.style.top = Math.random() * window.innerHeight + "px";
+
+            var time = Math.random();
+
+            k.style.animationDuration = 1.5+time + "s";
+
+            // k.style.background="rgb("+Math.random()*255","255","0")";
+
+            k.style.background = "makeColor()";
+
+            document.querySelector('#container').appendChild(k);
+
+            // console.log(window.innerWidth, window.innerHeight);
+
+            // 0에서 시작하고 몇번돌리고 더할지
+
+        }
+
+        function makeColor() {
+                            // Math.random() = 0 ~ 1 랜덤 값  0.1 * 255 = 25.5 =>올림=> 26
+            var a = Math.ceil(Math.random() * 255);
+
+            var b = Math.ceil(Math.random() * 255);
+
+            var c = Math.ceil(Math.random() * 255);
+
+            var text = "rgb(" + a + "," + b + "," + c + ")";
+
+            return text;
+
+        }
+        // var toggle = "off";
+        // cat.onclick = function() {
+
+        //     if (toggle == "off") {
+        //         sleep.play();
+        //         toggle = "on";
+
+        //     } else {
+        //         sleep.pause();
+        //         toggle = "off";
+
+        //     }
+
+        // }
+    
+        star1.onclick = function(){
+            modal.style.display = 'inline'
+            document.querySelector('#modal #picture').style.backgroundImage = "url('nightMoon.jpg')"
+            document.querySelector('#modal #picture').style.backgroundSize = '100%';
+            document.querySelector('#modal #picture').style.backgroundRepeat = 'no-repeat';
+            document.querySelector('#modal #song_name').innerHTML = 'Yiruma-maybe'
+            var toggle = true
+            play_btn.onclick = function(){
+                if(toggle){
+                    maybe.play()
+                    toggle = false
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'none'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'inline'
+                }else{
+                    maybe.pause()
+                    toggle = true
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'inline'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'none'
+                }
+            }
+        }
+        star2.onclick = function(){
+             modal.style.display = 'inline'
+            document.querySelector('#modal #picture').style.backgroundImage = "url('nightMoon1.jpg')"
+            document.querySelector('#modal #picture').style.backgroundSize = '100%';
+            document.querySelector('#modal #picture').style.backgroundRepeat = 'no-repeat';
+            document.querySelector('#modal #song_name').innerHTML = 'Yiruma-kiss the rain'
+            var toggle = true
+            play_btn.onclick = function(){
+                if(toggle){
+                    kisstherain.play()
+                    toggle = false
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'none'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'inline'
+                }else{
+                    kisstherain.pause()
+                    toggle = true
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'inline'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'none'
+                }
+            }
+        }
+        star3.onclick = function(){
+             modal.style.display = 'inline'
+            document.querySelector('#modal #picture').style.backgroundImage = "url('pinkMoon.jpg')"
+            document.querySelector('#modal #picture').style.backgroundSize = '100%';
+            document.querySelector('#modal #picture').style.backgroundRepeat = 'no-repeat';
+            document.querySelector('#modal #song_name').innerHTML = 'Greensleeves'
+            var toggle = true
+            play_btn.onclick = function(){
+                if(toggle){
+                    greensleeves.play()
+                    toggle = false
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'none'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'inline'
+                }else{
+                    greensleeves.pause()
+                    toggle = true
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'inline'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'none'
+                }
+            }
+        }
+        star4.onclick = function(){
+             modal.style.display = 'inline'
+            document.querySelector('#modal #picture').style.backgroundImage = "url('pinkMoon1.jpg')"
+            document.querySelector('#modal #picture').style.backgroundSize = '100%';
+            document.querySelector('#modal #picture').style.backgroundRepeat = 'no-repeat';
+            document.querySelector('#modal #song_name').innerHTML = 'Howls Moving Castle OST'
+            var toggle = true
+            play_btn.onclick = function(){
+                if(toggle){
+                    howls.play()
+                    toggle = false
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'none'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'inline'
+                }else{
+                    howls.pause()
+                    toggle = true
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'inline'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'none'
+                }
+            }
+        }
+        star5.onclick = function(){
+             modal.style.display = 'inline'
+            document.querySelector('#modal #picture').style.backgroundImage = "url('pinkMoon2.jpg')"
+            document.querySelector('#modal #picture').style.backgroundSize = '100%';
+            document.querySelector('#modal #picture').style.backgroundRepeat = 'no-repeat';
+            document.querySelector('#modal #song_name').innerHTML = 'Jocelyn-Benceuse'
+            var toggle = true
+            play_btn.onclick = function(){
+                if(toggle){
+                    jocelyn.play()
+                    toggle = false
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'none'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'inline'
+                }else{
+                    jocelyn.pause()
+                    toggle = true
+                    document.querySelector('#modal #info #play_btn #play').style.display = 'inline'
+                    document.querySelector('#modal #info #play_btn #pause').style.display = 'none'
+                }
+            }
+        }
+
+        document.querySelector('#modal #close_btn').onclick = function(){
+            modal.style.display = 'none'
+        }
+        document.querySelector('#modal #info #heart').onclick = function(){
+            var noneHeartDisplay = document.querySelector('#modal #info #heart #none_heart').style.display
+            if(noneHeartDisplay != 'none'){
+                document.querySelector('#modal #info #heart #none_heart').style.display = 'none'
+                document.querySelector('#modal #info #heart #red_heart').style.display = 'inline'
+            }else{
+                document.querySelector('#modal #info #heart #none_heart').style.display = 'inline'
+                document.querySelector('#modal #info #heart #red_heart').style.display = 'none'
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
